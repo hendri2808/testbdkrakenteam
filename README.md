@@ -220,6 +220,12 @@ Perform token transfers as described.
 ## Troubleshooting:
 
 - "Failed to fetch token balance": Ensure the smart contract is deployed and tokens are minted.
+
+Make sure your hardhat running:
+```
+npx hardhat node
+```
+
 use script for mint on hardhat, exampel:
 ```
 // mintTokens.js
@@ -245,7 +251,10 @@ main().catch((error) => {
 });
 ```
 
-Then, you can do the minting. 
+Then, you can do the minting. Run the minting
+```
+$ npx hardhat run mintTokens.js --network localhost
+```
 
 - "Hardhat node reset": Restart the steps from deploying the contract to minting tokens.
 
