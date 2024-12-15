@@ -220,8 +220,9 @@ Perform token transfers as described.
 ## Troubleshooting:
 
 - "Failed to fetch token balance": Ensure the smart contract is deployed and tokens are minted.
-use script for mint on hardhat, exampel mintTokens.js:
+use script for mint on hardhat, exampel:
 ```
+// mintTokens.js
 async function main() {
   const [deployer] = await ethers.getSigners();
 
