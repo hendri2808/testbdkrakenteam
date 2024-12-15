@@ -184,5 +184,37 @@ This project demonstrates the ability to integrate blockchain functionality into
 The project is fully functional and meets the requirements outlined in the test case. It is hosted on Netlify for easy access: [Kraken Team Demo](https://demokrakenteam.netlify.app/)
 For any questions or feedback, please feel free to reach out.
 
+---
+
+## Notes for the Reviewer:
+
+This demo application uses **Hardhat Local Network** for testing purposes. Due to the nature of Hardhat, all data (including token balances) resets when the node restarts. To ensure the application works properly, please follow these steps:
+
+1. **Start Hardhat Node**:
+```
+   npx hardhat node
+```
+
+2. **Re-Deploy the Smart Contract: Run the script to deploy the smart contract**:
+```
+npx hardhat run scripts/deploy.js --network localhost
+```
+
+3. **Mint Tokens: After deployment, run the minting script to distribute tokens**:
+```
+npx hardhat run scripts/mint.js --network localhost
+```
+
+4. **Run the Frontend: Start the frontend and connect the wallet to Hardhat Local Network**:
+```
+npm run dev
+```
+
+5. **Test the Application**:
+Connect Wallet using MetaMask.
+Fetch Token Balance and verify the UI displays the balance and conversion rates.
+Perform token transfers as described.
+
+
 Cheers,
 Kraken
