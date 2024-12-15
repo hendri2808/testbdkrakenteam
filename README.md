@@ -181,8 +181,6 @@ Hardhat Forking provided a reliable test environment without requiring actual ET
 
 ### **Conclusion**
 This project demonstrates the ability to integrate blockchain functionality into a complete DApp solution. Key features include smart contract development, wallet integration, token transfer functionality, and fiat conversion. While the absence of Sepolia faucet tokens limited testnet deployment, Hardhat Forking enabled a realistic testing environment.
-The project is fully functional and meets the requirements outlined in the test case. It is hosted on Netlify for easy access: [Kraken Team Demo](https://demokrakenteam.netlify.app/)
-For any questions or feedback, please feel free to reach out.
 
 ---
 
@@ -219,14 +217,49 @@ Perform token transfers as described.
 
 ## Troubleshooting:
 
-- "Failed to fetch token balance": Ensure the smart contract is deployed and tokens are minted.
+1. **"Failed to fetch token balance": Ensure the smart contract is deployed and tokens are minted.**
 
-Make sure your hardhat running:
+- Make sure your hardhat running:
 ```
 npx hardhat node
 ```
 
-use script for mint on hardhat, exampel:
+- Redeploy your smart Contract and make sure you use deploy script, example deploy.js:
+```
+// scripts/deploy.js
+
+async function main() {
+  const [deployer] = await ethers.getSigners();
+
+  console.log("Deploying contracts with the account:", deployer.address);
+
+  const MockERC20 = await ethers.getContractFactory("MockERC20");
+  const mockERC20 = await MockERC20.deploy("MyToken", "MTK", ethers.utils.parseUnits("1000", 18));
+  await mockERC20.deployed();
+  console.log("MockERC20 deployed to:", mockERC20.address);
+
+  const TokenTransfer = await ethers.getContractFactory("TokenTransfer");
+  const tokenTransfer = await TokenTransfer.deploy();
+  await tokenTransfer.deployed();
+  console.log("TokenTransfer deployed to:", tokenTransfer.address);
+}
+
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
+```
+
+- Run the deploy.js
+```
+npx hardhat run scripts/deploy.js --network localhost
+```
+- Make sure the scripts/deploy.js file contains the deployment logic for the ERC20 contract or other contract you are using.
+- If there's a problem here, make sure the ABI and contract address are updated in deployAddress.json.
+
+- use script for mint on hardhat, exampel:
 ```
 // mintTokens.js
 async function main() {
@@ -251,13 +284,20 @@ main().catch((error) => {
 });
 ```
 
-Then, you can do the minting. Run the minting
+- Then, you can do the minting. Run the minting
 ```
 $ npx hardhat run mintTokens.js --network localhost
 ```
 
-- "Hardhat node reset": Restart the steps from deploying the contract to minting tokens.
+- Make sure you make change the deployAddress.js on your frontend-dapp with your new Address
+- Also makesure your abis.js on your frontend-dapp match with your new deployment contract
 
+2. **"Hardhat node reset": Restart the steps from deploying the contract to minting tokens.**
+
+---
+
+The project is fully functional and meets the requirements outlined in the test case. It is hosted on Netlify for easy access: [Kraken Team Demo](https://demokrakenteam.netlify.app/)
+For any questions or feedback, please feel free to reach out.
 
 Cheers,
 Kraken
