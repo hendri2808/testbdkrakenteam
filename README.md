@@ -215,6 +215,12 @@ Connect Wallet using MetaMask.
 Fetch Token Balance and verify the UI displays the balance and conversion rates.
 Perform token transfers as described.
 
+---
+
+## Troubleshooting:
+
+"Failed to fetch token balance": Ensure the smart contract is deployed and tokens are minted.
+"Hardhat node reset": Restart the steps from deploying the contract to minting tokens.
 
 Cheers,
 Kraken
