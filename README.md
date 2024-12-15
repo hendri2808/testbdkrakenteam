@@ -220,6 +220,32 @@ Perform token transfers as described.
 ## Troubleshooting:
 
 - "Failed to fetch token balance": Ensure the smart contract is deployed and tokens are minted.
+use script for mint on hardhat, exampel mintTokens.js:
+```
+async function main() {
+  const [deployer] = await ethers.getSigners();
+
+  const Token = await ethers.getContractFactory("YourTokenName");
+  const token = await Token.attach("NEW_ADDRESS_CONTRACT");
+
+  // Mint token to wallet
+  const recipient = "YOUR_WALLET_ADDRESS"; 
+  const amount = ethers.utils.parseUnits("1000", 18); // Mint 1000 token
+
+  const tx = await token.mint(recipient, amount);
+  await tx.wait();
+
+  console.log(`Minted 1000 tokens to ${recipient}`);
+}
+
+main().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});
+```
+
+Then, you can do the minting. 
+
 - "Hardhat node reset": Restart the steps from deploying the contract to minting tokens.
 
 
