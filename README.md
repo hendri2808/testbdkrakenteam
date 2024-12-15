@@ -200,7 +200,7 @@ npx hardhat run scripts/deploy.js --network localhost
 
 3. **Mint Tokens: After deployment, run the minting script to distribute tokens**:
 ```
-npx hardhat run scripts/mint.js --network localhost
+npx hardhat run mintTokens.js --network localhost
 ```
 
 4. **Run the Frontend: Start the frontend and connect the wallet to Hardhat Local Network**:
@@ -286,7 +286,7 @@ main().catch((error) => {
 
 - Then, you can do the minting. Run the minting
 ```
-$ npx hardhat run mintTokens.js --network localhost
+npx hardhat run mintTokens.js --network localhost
 ```
 
 - Make sure you make change the deployAddress.js on your frontend-dapp with your new Address
