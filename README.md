@@ -192,7 +192,7 @@ http://localhost:3000
 This update introduces persistent storage for local deployments and streamlines the troubleshoot workflow. It ensures the development and testing flow is smooth, reliable, and replicable.
 
 Cheers,
-Kraken (a.k.a Hendri)
+**Kraken (a.k.a Hendri)**
 
 ---
 
