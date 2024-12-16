@@ -44,7 +44,7 @@ This test was carried out by Kraken (a.k.a Hendri) himself for 2 days.
 - Hosted frontend on Netlify: [Kraken Team Demo](https://demokrakenteam.netlify.app/)
 
 ### **Smart Contract Deployment**
-- Due to the lack of access to Sepolia faucet tokens, the smart contract was not deployed to a testnet. Instead, we utilized **Hardhat Forking** to fork the Sepolia blockchain locally. This allowed us to simulate a realistic blockchain environment for development and testing.
+- In this update, we added **persistent storage** locally by using **Hardhat's deploy and deployment scripts**. This ensures that the deployment data remains available across sessions.
 
 ---
 
@@ -86,7 +86,10 @@ This test was carried out by Kraken (a.k.a Hendri) himself for 2 days.
    - The UI displays the equivalent USDC and USD value for the token balance.
    - Conversion assumes 1 MTK = 1 USDT for simplicity.
 
-3. **Frontend Features**:
+3. **Persistent Deployment**:
+   - Deployment scripts were updated to ensure contract deployments are saved persistently in the local storage.
+
+4. **Frontend Features**:
    - Wallet connection via MetaMask.
    - Input fields for:
      - Recipient address.
@@ -95,209 +98,97 @@ This test was carried out by Kraken (a.k.a Hendri) himself for 2 days.
      - Token balance.
      - Equivalent fiat values in USDC and USD.
 
-4. **Backend (Simulated)**:
-   - Fiat conversion rates are fetched from **CoinGecko API**.
-   - USDT/USD pairing is hardcoded as 1:1 for simplicity in token-to-fiat conversion.
-
 ---
 
-### **Challenges Faced**
-1. **Testnet Deployment**:
-   - The smart contract could not be deployed to Sepolia testnet due to the lack of Sepolia faucet tokens. A minimum of 0.001 ETH is required to execute contract deployments and interact with the testnet.
-   - Attempts to obtain tokens via Discord community support were unsuccessful.
-
-2. **Solution**:
-   - Hardhat Forking was used to simulate the Sepolia blockchain locally, providing an environment similar to the actual blockchain for development and testing.
-
----
-
-### **How to Run Locally**
+## **How to Run Locally**
 
 1. **Clone the Repository**:
-```
-git clone https://github.com/hendri2808/testbdkrakenteam.git
-cd testbdkrakenteam
-```
+   ```bash
+   git clone https://github.com/hendri2808/testbdkrakenteam.git
+   cd testbdkrakenteam
+   ```
 
-2. **Install Dependencies**:
-Navigate to the frontend-dapp folder for the frontend:
+2. **Install Dependencies: Navigate to the frontend-dapp folder for the frontend**:
 
-```
+```bash
 cd frontend-dapp
 npm install
 ```
 
-3. **Run Hardhat Node**:
-Start a local blockchain fork:
-```
-npx hardhat node
+3. **Run the Project: Start all processes simultaneously**:
+
+```bash
+npm run start:all
 ```
 
-4. **Deploy Smart Contracts**:
-Deploy the MockERC20 contract:
-```
-npx hardhat run scripts/deploy.js --network localhost
-```
+4. **Mint Tokens: Run the minting script manually**:
 
-5. **Run the Frontend**:
-Start the development server:
+```bash
+npx hardhat run mintTokens.js --network localhost
+Access the UI: Open http://localhost:3000 in your browser.
 ```
-npm run dev
-```
-Open http://localhost:3000 in your browser.
 
 ---
 
-### **Demo Application Flow**
+## **Demo Application Flow**
 
-1. Connect your wallet using MetaMask.
-2. View your current token balance.
-3. Enter:
-- Recipient address.
-- Amount to transfer.
-4. View the fiat equivalent of your token balance in USDC and USD.
-5. Execute a token transfer.
-
----
-
-### **Approach and Tools Used**
-
-1. **Smart Contract Development**:
-Created a basic ERC-20 token contract (MockERC20) to simulate stablecoin transfers.
-Deployed locally using Hardhat.
-
-2. **Frontend Development**:
-Used React/Next.js to create a user-friendly interface.
-Integrated wallet connection and smart contract interaction.
-
-3. **Fiat Conversion**:
-Used CoinGecko API to fetch the latest USDT/USD rate.
-Simulated fiat conversion in the frontend.
-
-4. **Blockchain Simulation**:
-Hardhat Forking provided a reliable test environment without requiring actual ETH for deployment.
-
----
-
-### **Conclusion**
-This project demonstrates the ability to integrate blockchain functionality into a complete DApp solution. Key features include smart contract development, wallet integration, token transfer functionality, and fiat conversion. While the absence of Sepolia faucet tokens limited testnet deployment, Hardhat Forking enabled a realistic testing environment.
-
----
-
-## Notes for the Reviewer:
-
-This demo application uses **Hardhat Local Network** for testing purposes. Due to the nature of Hardhat, all data (including token balances) resets when the node restarts. To ensure the application works properly, please follow these steps:
-
-1. **Start Hardhat Node**:
-```
-   npx hardhat node
+1. **Start the application**:
+```bash
+npm run start:all
 ```
 
-2. **Re-Deploy the Smart Contract: Run the script to deploy the smart contract**:
-```
-npx hardhat run scripts/deploy.js --network localhost
-```
-
-3. **Mint Tokens: After deployment, run the minting script to distribute tokens**:
-```
+2. **Run the minting script**:
+```bash
 npx hardhat run mintTokens.js --network localhost
 ```
 
-4. **Run the Frontend: Start the frontend and connect the wallet to Hardhat Local Network**:
-```
-npm run dev
+3. **Open the browser and visit**:
+```arduino
+http://localhost:3000
 ```
 
-5. **Test the Application**:
-Connect Wallet using MetaMask.
-Fetch Token Balance and verify the UI displays the balance and conversion rates.
-Perform token transfers as described.
+4. **Test features**:
+- Connect Wallet using MetaMask.
+- Fetch Token Balance.
+- Execute token transfers.
+- View balance converted to USDC and USD.
 
 ---
 
-## Troubleshooting:
+## **Troubleshooting**
 
-1. **"Failed to fetch token balance": Ensure the smart contract is deployed and tokens are minted.**
+### **Updated Flow for Troubleshooting**:
 
-- Make sure your hardhat running:
-```
-npx hardhat node
-```
-
-- Redeploy your smart Contract and make sure you use deploy script, example deploy.js:
-```
-// scripts/deploy.js
-
-async function main() {
-  const [deployer] = await ethers.getSigners();
-
-  console.log("Deploying contracts with the account:", deployer.address);
-
-  const MockERC20 = await ethers.getContractFactory("MockERC20");
-  const mockERC20 = await MockERC20.deploy("MyToken", "MTK", ethers.utils.parseUnits("1000", 18));
-  await mockERC20.deployed();
-  console.log("MockERC20 deployed to:", mockERC20.address);
-
-  const TokenTransfer = await ethers.getContractFactory("TokenTransfer");
-  const tokenTransfer = await TokenTransfer.deploy();
-  await tokenTransfer.deployed();
-  console.log("TokenTransfer deployed to:", tokenTransfer.address);
-}
-
-main()
-  .then(() => process.exit(0))
-  .catch((error) => {
-    console.error(error);
-    process.exit(1);
-  });
+1. **Run all services**:
+```bash
+npm run start:all
 ```
 
-- Run the deploy.js
-```
-npx hardhat run scripts/deploy.js --network localhost
-```
-- Make sure the scripts/deploy.js file contains the deployment logic for the ERC20 contract or other contract you are using.
-- If there's a problem here, make sure the ABI and contract address are updated in deployAddress.json.
+2. **Mint tokens: Run the script**:
 
-- use script for mint on hardhat, exampel:
-```
-// mintTokens.js
-async function main() {
-  const [deployer] = await ethers.getSigners();
-
-  const Token = await ethers.getContractFactory("YourTokenName");
-  const token = await Token.attach("NEW_ADDRESS_CONTRACT");
-
-  // Mint token to wallet
-  const recipient = "YOUR_WALLET_ADDRESS"; 
-  const amount = ethers.utils.parseUnits("1000", 18); // Mint 1000 token
-
-  const tx = await token.mint(recipient, amount);
-  await tx.wait();
-
-  console.log(`Minted 1000 tokens to ${recipient}`);
-}
-
-main().catch((error) => {
-  console.error(error);
-  process.exit(1);
-});
-```
-
-- Then, you can do the minting. Run the minting
-```
+```bash
 npx hardhat run mintTokens.js --network localhost
 ```
 
-- Make sure you make change the deployAddress.js on your frontend-dapp with your new Address
-- Also makesure your abis.js on your frontend-dapp match with your new deployment contract
+3. **Access UI: Open the frontend**:
+```bash
+http://localhost:3000
+```
 
-2. **"Hardhat node reset": Restart the steps from deploying the contract to minting tokens.**
+4. **Verify the flow**:
+- Connect Wallet.
+- Fetch Balance.
+- Test Token Transfer.
+- Verify USD and USDC conversion.
+
+5. **Deployment Notes**:
+- Ensure ABI and contract addresses are updated in the frontend after redeployment.
+- Update deployAddress.json and abis.js files if the contract address changes.
 
 ---
 
-The project is fully functional and meets the requirements outlined in the test case. It is hosted on Netlify for easy access: [Kraken Team Demo](https://demokrakenteam.netlify.app/)
-For any questions or feedback, please feel free to reach out.
+## **Conclusion**
+This update introduces persistent storage for local deployments and streamlines the troubleshoot workflow. It ensures the development and testing flow is smooth, reliable, and replicable.
 
 Cheers,
-Kraken
+Kraken (a.k.a Hendri)
