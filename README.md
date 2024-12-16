@@ -75,6 +75,23 @@ This project is a result of the blockchain developer test assigned by **Nico Yud
 
 ---
 
+### **Challenges Faced**
+
+1. **Testnet Deployment**:
+   - Deploying the smart contract to Sepolia testnet was not possible due to the following reasons:
+     - **Lack of Sepolia Faucet Tokens**: To deploy and interact with contracts on the Sepolia testnet, a minimum of 0.001 ETH is required in the wallet. Unfortunately, I did not have the required funds to obtain the tokens.
+     - **Difficulty Accessing Faucet**: Attempts to obtain Sepolia ETH from public faucets and community requests were unsuccessful.
+     - **No Immediate Support**: Despite reaching out to the community for help, no responses were received within the testing timeframe.
+
+2. **Solution**:
+   - To overcome this challenge and ensure smooth testing, **Hardhat Forking** was used to create a local environment by forking the Sepolia blockchain. This allowed me to:
+     - Simulate real-world blockchain interactions.
+     - Test smart contract deployments, token transfers, and user interface functionality without requiring actual ETH or access to the Sepolia testnet.
+
+   While this approach was necessary under the circumstances, it ensured that all project requirements were met and thoroughly tested.
+
+---
+
 ### **Features Implemented**
 1. **Token Transfer**:
    - A smart contract (`MockERC20`) was developed to handle the token transfer functionality.
