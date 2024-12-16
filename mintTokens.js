@@ -4,7 +4,7 @@ async function main() {
   const [owner] = await ethers.getSigners(); // Ambil address pertama di Hardhat node
 
   // Alamat MockERC20 di Hardhat
-  const mockERC20Address = "0x0946C0490bA465e995Af6B0BAd5F2316E4C6B7B8";
+  const mockERC20Address = "0x18e56c4717e2e5ff74a23a8e05e9d4cd5f165e3e";
 
   // ABI dari MockERC20
   const mockERC20ABI = [

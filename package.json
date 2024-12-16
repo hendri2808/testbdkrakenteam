@@ -7,7 +7,7 @@
     "start:hardhat": "npx hardhat node",
     "start:backend": "node backend/server.js",
     "start:frontend": "cd frontend-dapp && npm run dev",
-    "start:all": "concurrently -k -n \"HARDHAT,BACKEND,FRONTEND\" -c \"blue,green,yellow\" \"npm run start:hardhat\" \"npm run start:backend\" \"npm run start:frontend\""
+    "start:all": "concurrently -k -n \"HARDHAT,BACKEND,FRONTEND,MINT\" -c \"blue,green,yellow,cyan\" \"npm run start:hardhat\" \"npm run start:backend\" \"npm run start:frontend\""
   },
   "dependencies": {
     "@openzeppelin/contracts": "^5.1.0",

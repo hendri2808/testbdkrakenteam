@@ -18,6 +18,12 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Tengah secara vertikal */
+  align-items: center; /* Tengah secara horizontal */
+  min-height: 100vh; /* Layar penuh */
+  margin: 0; /* Hilangkan margin default */
 }
 
 @font-face {
@@ -44,4 +50,60 @@ body {
     font-style: normal;
 }
 
-/* Tambahkan aturan font-face lain untuk semua varian jika diperlukan */
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+header img {
+  margin-right: 0.5rem;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Tengah secara vertikal */
+  align-items: center; /* Tengah secara horizontal */
+  margin: 0 auto; /* Tengah di tengah horizontal */
+  width: 100%;
+  max-width: 600px; /* Maksimum lebar */
+  padding: 1rem; /* Jarak ke tepi */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Tambahkan bayangan */
+  background-color: #fff; /* Latar belakang putih */
+  border-radius: 0.5rem; /* Sudut membulat */
+}
+
+footer {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: #555;
+  font-size: 0.875rem;
+}
+
+button {
+  transition: background-color 0.3s ease;
+}
+
+main div.space-y-4 > * {
+  margin-bottom: 1rem; /* Berikan jarak antar elemen */
+}
+
+main div.space-y-4 > *:last-child {
+  margin-bottom: 0; /* Hilangkan margin untuk elemen terakhir */
+}
+
+button {
+  display: block; /* Pastikan tombol terpisah baris */
+  width: 100%; /* Lebar penuh agar lebih rapih */
+  margin: 0 auto; /* Center tombol secara horizontal */
+}
+
+input {
+  padding: 0.5rem; /* Tambahkan padding di dalam input */
+  margin-top: 0.5rem; /* Jarak atas untuk label ke input */
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
