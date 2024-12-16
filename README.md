@@ -1,5 +1,7 @@
 # Blockchain Developer Test
 
+![image](https://github.com/user-attachments/assets/9889e53e-c262-4e16-a1cb-4ce3bcad561a)
+
 This project is a result of the blockchain developer test assigned by **Nico Yudhanto** (<nico.yudhanto@anantla.com>) on **December 12, 2024**. The objective was to demonstrate blockchain development skills by completing the tasks listed in the test case. The project was completed on **December 15, 2024**, and update on **December 16, 2024** for final Result of the test.
 
 ---
