@@ -101,8 +101,8 @@ This project is a result of the blockchain developer test assigned by **Nico Yud
    - Transactions are signed via MetaMask.
 
 2. **Token to Fiat Conversion**:
-   - The UI displays the equivalent USDC and USD value for the token balance.
-   - Conversion assumes 1 MTK = 1 USDT for simplicity.
+   - The UI dynamically displays the equivalent USDC and USD values for the token balance. To achieve this, we utilize CoinGecko API as the conversion rate provider. The application fetches real-time conversion rates to interact and calculate the equivalent value in USDC and USD, ensuring up-to-date accuracy.
+   - For simplicity, the system assumes 1 MTK = 1 USDT as the base conversion rate, while the fetched rates refine the final displayed values.
 
 3. **Persistent Deployment**:
    - Deployment scripts were updated to ensure contract deployments are saved persistently in the local storage.
