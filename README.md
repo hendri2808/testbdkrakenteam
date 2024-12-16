@@ -1,7 +1,6 @@
 # Blockchain Developer Test
 
-This project is a result of the blockchain developer test assigned by **Nico Yudhanto** (<nico.yudhanto@anantla.com>) on **December 12, 2024**. The objective was to demonstrate blockchain development skills by completing the tasks listed in the test case. The project was completed on **December 15, 2024**.
-This test was carried out by Kraken (a.k.a Hendri) himself for 2 days.
+This project is a result of the blockchain developer test assigned by **Nico Yudhanto** (<nico.yudhanto@anantla.com>) on **December 12, 2024**. The objective was to demonstrate blockchain development skills by completing the tasks listed in the test case. The project was completed on **December 15, 2024**, and update on **December 16, 2024** for final Result of the test.
 
 ---
 
