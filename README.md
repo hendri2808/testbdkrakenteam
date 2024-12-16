@@ -193,3 +193,30 @@ This update introduces persistent storage for local deployments and streamlines 
 
 Cheers,
 Kraken (a.k.a Hendri)
+
+---
+
+## **Snapshot Library**
+
+1. **Connect Wallet**:
+   - ![image](https://github.com/user-attachments/assets/c70108eb-340f-43bc-ab32-ae4bb4a18a65)
+   - ![image](https://github.com/user-attachments/assets/a1f7db57-4435-4842-9456-fee7d2d7032e)
+
+2. **Fetch Balance & Conversion USDC,USD**:
+   - ![image](https://github.com/user-attachments/assets/3cb1805b-5678-4a45-a5d8-b1ac224ddc8f)
+   - ![image](https://github.com/user-attachments/assets/59572122-c606-4bc3-b065-c1b658d4d780)
+   - ![image](https://github.com/user-attachments/assets/0c259781-fe23-48b6-b7af-705d487196b7)
+
+3. **Transfer Token on Local Harhat Sepolia Fork**
+   - ![image](https://github.com/user-attachments/assets/7ee7d023-02d6-44b2-b3f7-2c033c6e1319)
+   - ![image](https://github.com/user-attachments/assets/2fd6a758-480c-4113-99b3-625c2b229b77)
+   - ![image](https://github.com/user-attachments/assets/4f27eb9e-a28c-4095-949b-b399fc31204a)
+   - ![image](https://github.com/user-attachments/assets/8ed867e6-237a-4781-9634-7cf2d82574f8)
+   - ![image](https://github.com/user-attachments/assets/bb931caa-7f0a-40ae-a4b7-299b350b3190)
+   - ![image](https://github.com/user-attachments/assets/5f0a9bb4-23f3-444a-8c33-cbff4f516f57)
+
+
+
+
+
+
